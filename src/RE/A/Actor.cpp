@@ -592,6 +592,13 @@ namespace RE
 		return func(this, a_outRider);
 	}
 
+	float Actor::GetSubmergedLevel(float a_zPos, RE::TESObjectCELL* a_cell)
+	{
+		using func_t = decltype(&Actor::GetSubmergedLevel);
+		REL::Relocation<func_t> func{ REL::RelocationID(36452, 37448) };
+		return func(this, a_zPos, a_cell);
+	}
+
 	TESObjectARMO* Actor::GetSkin() const
 	{
 		if (const auto base = GetActorBase(); base && base->skin) {
