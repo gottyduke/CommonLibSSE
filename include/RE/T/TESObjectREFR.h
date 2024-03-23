@@ -453,6 +453,8 @@ namespace RE
 		[[nodiscard]] float                             IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const;
 		[[nodiscard]] bool                              IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, float a_waterLevel) const;
 		void                                            MoveTo(TESObjectREFR* a_target);
+		bool                                            MoveToEditorLocation(const NiPoint3& a_position, const NiPoint3& a_rotation);
+		bool                                            MoveToEditorLocation();
 		bool                                            MoveToNearestNavmesh(const float a_minimum_offset = 0.f);
 		bool                                            MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                            MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
