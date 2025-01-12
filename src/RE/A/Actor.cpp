@@ -791,6 +791,12 @@ namespace RE
 		return GetGraphVariableBool("bAnimationDriven", result) && result;
 	}
 
+	bool Actor::IsAllowRotation() const
+	{
+		bool result = false;
+		return GetGraphVariableBool("bAllowRotation", result) && result;
+	}
+
 	bool Actor::IsBeingRidden() const
 	{
 		return IsAMount() && extraList.HasType(ExtraDataType::kInteraction);

@@ -586,6 +586,7 @@ namespace RE
 		[[nodiscard]] bool                      IsAlarmed() const;
 		[[nodiscard]] bool                      IsAMount() const;
 		[[nodiscard]] bool                      IsAnimationDriven() const;
+		[[nodiscard]] bool                      IsAllowRotation() const;
 		[[nodiscard]] bool                      IsBeingRidden() const;
 		[[nodiscard]] bool                      IsBlocking() const;
 		[[nodiscard]] bool                      IsCasting(MagicItem* a_spell) const;
