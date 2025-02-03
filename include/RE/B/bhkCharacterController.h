@@ -89,7 +89,7 @@ namespace RE
 		virtual hkpRigidBody* GetRigidBody() const = 0;                                                                 // 10
 		virtual float         GetVDBAlpha() const = 0;                                                                  // 11
 		virtual void          Unk_12(void) = 0;                                                                         // 12
-		virtual void          Unk_13(void) = 0;
+		virtual void          Unk_13(void) = 0;                                                                         // 13
 
 		inline void GetPosition(hkVector4& a_pos, bool a_applyCenterOffset) const { return GetPositionImpl(a_pos, a_applyCenterOffset); }
 
