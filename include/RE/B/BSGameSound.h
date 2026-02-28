@@ -100,40 +100,40 @@ namespace RE
 		virtual void SetVolumeImpl() = 0;                              // 18
 
 		// members
-		char                 requests[24];          // 08
-		NiPoint3             beamEnd;               // 20
-		std::int32_t         unk2C;                 // 2C
-		SoundMessageList     list;                  // 30
-		BSResource::ID       resource_id;           // 40
-		std::int32_t         soundID;               // 4C
-		std::uint32_t        flags;                 // 50
-		std::int32_t         field;                 // 54
-		std::int32_t         alternateSoundFormId;  // 58
-		std::int32_t         flags2;                // 5C
-		std::uint32_t        milliseconds;          // 60
-		std::int16_t         attenuation;           // 64
-		std::int16_t         unk66;                 // 66
-		std::int16_t         calculatedAttenuation; // 68
-		std::int16_t         unk6A;                 // 6A
-		std::int16_t         unk6C;                 // 6C
-		char                 pad6E[2];              // 6E
-		float                volume;                // 70
-		float                unk74;                 // 74
-		float                unk78;                 // 78
-		std::int32_t         audioBytes;            // 7C
-		float                distanceToListener;    // 80
-		std::int32_t         unk84;                 // 84
-		std::int64_t         unk88;                 // 88
-		std::int64_t         callback;              // 90
-		std::int64_t         unk98;                 // 98
-		std::int64_t         unkA0;                 // A0
-		std::uint32_t        priority;              // A8
-		std::int32_t         unkAC;                 // AC
-		BSISoundCategory*    soundCategory;         // B0
-		BSISoundOutputModel* output_model;          // B8
-		std::uint8_t         min_frequency;         // C0
-		std::uint8_t         frequency_spread;      // C1
-		char                 unkC2[6];              // C2
+		char                 requests[24];           // 08
+		NiPoint3             beamEnd;                // 20
+		std::int32_t         unk2C;                  // 2C
+		SoundMessageList     list;                   // 30
+		BSResource::ID       resource_id;            // 40
+		std::int32_t         soundID;                // 4C
+		std::uint32_t        flags;                  // 50
+		std::int32_t         field;                  // 54
+		std::int32_t         alternateSoundFormId;   // 58
+		std::int32_t         flags2;                 // 5C
+		std::uint32_t        milliseconds;           // 60
+		std::int16_t         attenuation;            // 64
+		std::int16_t         unk66;                  // 66
+		std::int16_t         calculatedAttenuation;  // 68
+		std::int16_t         unk6A;                  // 6A
+		std::int16_t         unk6C;                  // 6C
+		char                 pad6E[2];               // 6E
+		float                volume;                 // 70
+		float                unk74;                  // 74
+		float                unk78;                  // 78
+		std::int32_t         audioBytes;             // 7C
+		float                distanceToListener;     // 80
+		std::int32_t         unk84;                  // 84
+		std::int64_t         unk88;                  // 88
+		std::int64_t         callback;               // 90
+		std::int64_t         unk98;                  // 98
+		std::int64_t         unkA0;                  // A0
+		std::uint32_t        priority;               // A8
+		std::int32_t         unkAC;                  // AC
+		BSISoundCategory*    soundCategory;          // B0
+		BSISoundOutputModel* output_model;           // B8
+		std::uint8_t         min_frequency;          // C0
+		std::uint8_t         frequency_spread;       // C1
+		char                 unkC2[6];               // C2
 	};
 	static_assert(sizeof(BSGameSound) == 0xC8);
 }
