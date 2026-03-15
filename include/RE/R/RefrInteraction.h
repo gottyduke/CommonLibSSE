@@ -1,40 +1,50 @@
 #pragma once
 
+#include "RE/A/ActorState.h"
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSTSmartPointer.h"
 #include "RE/S/SyncQueueObj.h"
 
 namespace RE
 {
+	class BGSSaveFormBuffer;
+	class BGSLoadFormBuffer;
+	class TESActionData;
+
 	class RefrInteraction : public SyncQueueObj
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_RefrInteraction;
+		inline static constexpr auto VTABLE = VTABLE_RefrInteraction;
+
+		enum class INTERACT_METHOD : uint32_t
+		{
+			Method_0
+		};
 
 		~RefrInteraction() override;  // 00
 
 		// add
-		virtual void Unk_02(void);      // 02 - { a_arg1 = g_invalidRefHandle; }
-		virtual void Unk_03(void) = 0;  // 03
-		virtual void Unk_04(void) = 0;  // 04
-		virtual void Unk_05(void);      // 05 - { return 0xFFFFFFFF; }
-		virtual void Unk_06(void);      // 06 - { return; }
-		virtual void Unk_07(void);      // 07 - { return 1; }
-		virtual void Unk_08(void);      // 08 - { unk18 = 1; return 0; }
-		virtual void Unk_09(void);      // 09 - { unk18 = 0; return 1; }
-		virtual void Unk_0A(void);      // 0A - { return; }
-		virtual void Unk_0B(void);      // 0B - { return 1; }
-		virtual void Unk_0C(void);      // 0C - { return; }
-		virtual void Unk_0D(void) = 0;  // 0D
-		virtual void Unk_0E(void) = 0;  // 0E
-		virtual void Unk_0F(void) = 0;  // 0F
+		virtual ActorHandle     GetTargetActorHandle() const;                                                    // 02
+		virtual INTERACT_METHOD QInteractMethod() const = 0;                                                     // 03
+		virtual bool            CanInteractionTeleport() const = 0;                                              // 04
+		virtual uint32_t        GetFurnMarkerIndex() const;                                                      // 05
+		virtual void            AssignInteractionImpl(const BSTSmartPointer<RefrInteraction>& new_interaction);  // 06
+		virtual bool            CanBeginInteractionImpl(Actor* a) const;                                         // 07
+		virtual SYNC_STATUS     SyncImpl();                                                                      // 08
+		virtual bool            DesyncImpl(bool not_clear_behavior, bool clear_synced);                          // 09
+		virtual void            SaveGameImpl(BGSSaveFormBuffer* buf) const;                                      // 0A
+		virtual bool            LoadGameImpl(BGSLoadFormBuffer* buf);                                            // 0B
+		virtual void            FinishLoadGameImpl();                                                            // 0C
+		virtual SIT_SLEEP_STATE QExpectedSitSleepState() const = 0;                                              // 0D
+		virtual SYNC_STATUS     BeginInteractionImpl(TESActionData& adata, bool a3) = 0;                         // 0E
+		virtual bool            EndInteractionImpl(TESActionData& adata, bool a3) = 0;                           // 0F
 
 		// members
-		ActorHandle     actor;       // 10
-		ObjectRefHandle targetRefr;  // 14
-		bool            synced;      // 18
-		std::uint8_t    pad19;       // 19
-		std::uint16_t   pad1A;       // 1A
-		std::uint32_t   pad1C;       // 1C
+		ObjectRefHandle target;    // 10
+		ActorHandle     actor;     // 14
+		bool            synced;    // 18
+		std::uint8_t    pad19[7];  // 19
 	};
 	static_assert(sizeof(RefrInteraction) == 0x20);
 }

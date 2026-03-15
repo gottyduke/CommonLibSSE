@@ -10,13 +10,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_SyncQueueObj;
 		inline static constexpr auto VTABLE = VTABLE_SyncQueueObj;
 
+		enum class SYNC_STATUS : uint32_t
+		{
+			Status_0,
+			Status_1,
+			Status_2
+		};
+
 		virtual ~SyncQueueObj();  // 00
 
 		// add
-		virtual void Unk_01(void) = 0;  // 01
+		virtual SYNC_STATUS QueuedSync() = 0;  // 01
 
 		// members
-		std::uint32_t unk0C;  // 0C
+		uint32_t pad0C;  // 0C
 	};
 	static_assert(sizeof(SyncQueueObj) == 0x10);
 }

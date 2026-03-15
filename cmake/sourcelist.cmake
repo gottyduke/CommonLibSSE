@@ -1401,6 +1401,7 @@ set(SOURCES
 	include/RE/M/ModelProcessor.h
 	include/RE/M/ModelReferenceEffect.h
 	include/RE/M/Moon.h
+	include/RE/M/MountInteraction.h
 	include/RE/M/MouseMoveEvent.h
 	include/RE/M/MoveToFunctor.h
 	include/RE/M/Movement.h
