@@ -25,7 +25,7 @@ namespace RE
 		bool QIsCurrLoc() override;                                                                     // 0C - { return pointer->type == PackageLocation::Type::kNearPackageStartLocation; }
 
 		// members
-		PackageLocation* pointer;   // 18
+		PackageLocation* pointer;  // 18
 	};
 	static_assert(sizeof(BGSPackageDataLocation) == 0x20);
 }

@@ -15,8 +15,8 @@ namespace RE
 		virtual ~BGSPackageDataPointerTemplate();  // 00
 
 		// override (BGSNamedPackageData<Parent>)
-		void                               Validate(BGSPackageDataValidationContext& a_validationContext) override; // 05  -  { return 1; }
-		[[nodiscard]] const BSFixedString& QType() const override;                                                  // 0B  -  { return TYPE_NAME; }
+		void                               Validate(BGSPackageDataValidationContext& a_validationContext) override;  // 05  -  { return 1; }
+		[[nodiscard]] const BSFixedString& QType() const override;                                                   // 0B  -  { return TYPE_NAME; }
 
 		// add
 		//virtual void InternalLoad(TESFile* a_mod) = 0;  //
