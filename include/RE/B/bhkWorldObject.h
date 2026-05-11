@@ -14,19 +14,25 @@ namespace RE
 
 		~bhkWorldObject() override;  // 00
 
-		// override (bhkSerializable)
-		const NiRTTI* GetRTTI() const override;                          // 02
-		void          LoadBinary(NiStream& a_stream) override;           // 18
-		void          LinkObject(NiStream& a_stream) override;           // 19
-		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A
-		void          SaveBinary(NiStream& a_stream) override;           // 1B
-		void          AdjustRefCount(bool a_increment) override;         // 26
-		hkpWorld*     GetWorld1() override;                              // 27 - { return world; }
-		ahkpWorld*    GetWorld2() override;                              // 28 - { return world; }
-		void          MoveToWorld(bhkWorld* a_world) override;           // 29
+		// override(NiObject)
+		const NiRTTI* GetRTTI() const override;  // 02
+
+		// override (NiObject)
+		void LoadBinary(NiStream& a_stream) override;           // 18
+		void LinkObject(NiStream& a_stream) override;           // 19
+		bool RegisterStreamables(NiStream& a_stream) override;  // 1A
+		void SaveBinary(NiStream& a_stream) override;           // 1B
+
+		// override(bhkRefObject)
+		void AdjustRefCount(bool a_increment) override;  // 26
+
+		// override(bhkSerializable)
+		hkpWorld*  GetWorld1() override;                     // 27 - { return world; }
+		ahkpWorld* GetWorld2() override;                     // 28 - { return world; }
+		void       MoveToWorld(bhkWorld* a_world) override;  // 29
 
 		// add
-		virtual void Unk_32(void);  // 32 - { return Unk_29(); }
+		virtual void MoveToWorld2(void*);  // 32
 
 		hkpPropertyValue GetProperty(uint32_t key) const { return static_cast<hkpWorldObject*>(referencedObject.get())->GetProperty(key); }
 

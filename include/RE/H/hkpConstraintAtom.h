@@ -5,7 +5,7 @@ namespace RE
 	struct hkpConstraintAtom
 	{
 	public:
-		enum AtomType
+		enum class AtomType : uint16_t
 		{
 			kInvalid = 0,
 
@@ -56,14 +56,14 @@ namespace RE
 			kMAX
 		};
 
-		enum SolvingMethod : uint8_t
+		enum class SolvingMethod : uint8_t
 		{
 			kStabilized = 0,
 			kOld = 1,
 		};
 
 		// members
-		stl::enumeration<AtomType, uint16_t> type;
+		AtomType type;
 	};
 	static_assert(sizeof(hkpConstraintAtom) == 0x2);
 

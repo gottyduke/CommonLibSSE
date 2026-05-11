@@ -10,7 +10,7 @@ namespace RE
 	class hkpConstraintData : public hkReferencedObject
 	{
 	public:
-		enum ConstraintType
+		enum class ConstraintType
 		{
 			kBallAndSocket = 0,
 			kHinge = 1,

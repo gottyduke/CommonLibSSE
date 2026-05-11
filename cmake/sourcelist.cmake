@@ -457,6 +457,7 @@ set(SOURCES
 	include/RE/B/bhkCollisionObject.h
 	include/RE/B/bhkCompressedMeshShape.h
 	include/RE/B/bhkCompressedMeshShapeData.h
+	include/RE/B/bhkConstraint.h
 	include/RE/B/bhkContactListener.h
 	include/RE/B/bhkEntity.h
 	include/RE/B/bhkListShape.h
@@ -465,6 +466,7 @@ set(SOURCES
 	include/RE/B/bhkPCollisionObject.h
 	include/RE/B/bhkPhantom.h
 	include/RE/B/bhkPickData.h
+	include/RE/B/bhkPrismaticConstraint.h
 	include/RE/B/bhkRefObject.h
 	include/RE/B/bhkRigidBody.h
 	include/RE/B/bhkSPCollisionObject.h

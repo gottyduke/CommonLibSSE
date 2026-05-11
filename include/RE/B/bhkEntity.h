@@ -12,12 +12,16 @@ namespace RE
 
 		~bhkEntity() override;  // 00
 
-		// override (bhkEntity)
-		const NiRTTI* GetRTTI() const override;                 // 02
-		void          LoadBinary(NiStream& a_stream) override;  // 18
-		void          SaveBinary(NiStream& a_stream) override;  // 1B
-		void          RemoveFromCurrentWorld() override;        // 2A
-		void          Unk_30(void) override;                    // 30
+		// override(NiObject)
+		const NiRTTI* GetRTTI() const override;  // 02
+
+		// override(NiObject)
+		void LoadBinary(NiStream& a_stream) override;  // 18
+		void SaveBinary(NiStream& a_stream) override;  // 1B
+
+		// override(bhkSerializable)
+		void RemoveFromCurrentWorld() override;  // 2A
+		void Clear2() override;                  // 30
 	};
 	static_assert(sizeof(bhkEntity) == 0x28);
 }

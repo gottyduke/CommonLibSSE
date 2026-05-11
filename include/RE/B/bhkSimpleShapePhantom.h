@@ -25,11 +25,6 @@ namespace RE
 		const NiRTTI* GetRTTI() const override;                           // 02
 		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17
 		void          LoadBinary(NiStream& a_stream) override;            // 18
-		void          Unk_2B(void) override;                              // 2B
-		void          Unk_2C(void) override;                              // 2C
-		void          Unk_2D(void) override;                              // 2D
-		void          Unk_2E(void) override;                              // 2E
-		void          Unk_2F(void) override;                              // 2F
 
 		struct CtorParams
 		{

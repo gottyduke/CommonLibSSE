@@ -2,6 +2,7 @@
 
 #include "RE/B/BSTArray.h"
 #include "RE/B/bhkEntity.h"
+#include "RE/N/NiSmartPointer.h"
 
 namespace RE
 {
@@ -18,8 +19,10 @@ namespace RE
 
 		~bhkRigidBody() override;  // 00
 
-		// override (bhkEntity)
-		const NiRTTI* GetRTTI() const override;                           // 02
+		// override(NiObject)
+		const NiRTTI* GetRTTI() const override;  // 02
+
+		// override(NiObject)
 		bhkRigidBody* AsBhkRigidBody() override;                          // 15 - { return this; }
 		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17
 		void          LoadBinary(NiStream& a_stream) override;            // 18
@@ -27,15 +30,19 @@ namespace RE
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
 		void          SaveBinary(NiStream& a_stream) override;            // 1B
 		bool          IsEqual(NiObject* a_object) override;               // 1C
-		void          MoveToWorld(bhkWorld* a_world) override;            // 29
-		void          RemoveFromCurrentWorld() override;                  // 2A
-		void          Unk_2B(void) override;                              // 2B
-		void          Unk_2C(void) override;                              // 2C - { return 0x110; }
-		void          Unk_2D(void) override;                              // 2D
-		void          Unk_2E(void) override;                              // 2E
-		void          Unk_2F(void) override;                              // 2F
-		void          Unk_30(void) override;                              // 30
-		void          Unk_32(void) override;                              // 32
+
+		// override(bhkSerializable)
+		void     MoveToWorld(bhkWorld* a_world) override;  // 29
+		void     RemoveFromCurrentWorld() override;        // 2A
+		void     ClearData(bool free) override;            // 2B
+		uint32_t GetSaveType() const override;             // 2C - { return 0x110; }
+		void     Unk_2D(void) override;                    // 2D
+		void     CreateHavokObject(void* cdata) override;  // 2E
+		void     Unk_2F(void) override;                    // 2F
+		void     Clear2() override;                        // 30
+
+		// override(bhkWorldObject)
+		void MoveToWorld2(void*) override;  // 32
 
 		// add
 		virtual void GetPosition(hkVector4& a_outPosition);                                    // 33
@@ -55,7 +62,7 @@ namespace RE
 		void SetLinearVelocity(const hkVector4& a_newVel);
 
 		// members
-		BSTArray<void*> unk28;  // 28 - array of smart ptrs to bhkConstraints
+		BSTArray<NiPointer<bhkSerializable>> actions_and_constraints;  // 28
 	};
 	static_assert(sizeof(bhkRigidBody) == 0x40);
 }

@@ -23,9 +23,9 @@ namespace RE
 		void          AdjustRefCount(bool a_increment) override;          // 26 - "void AdjustRefCount(bool a_increment)"?
 		hkpWorld*     GetWorld1() override;                               // 27 - { auto proxy = (hkpCharacterProxy*)referencedObject.get(); if (proxy && proxy->shapePhantom) return proxy->world; else return 0; }
 		ahkpWorld*    GetWorld2() override;                               // 28 - { return GetWorld(); }
-		void          Unk_2B(void) override;                              // 2B
-		void          Unk_2C(void) override;                              // 2C - { return 0x90; }
-		void          Unk_2E(void) override;                              // 2E
+		void          ClearData(bool free) override;                      // 2B
+		uint32_t      GetSaveType() const override;                       // 2C - { return 0x90; }
+		void          CreateHavokObject(void* cdata) override;            // 2E
 		void          Unk_2F(void) override;                              // 2F
 
 		// members
