@@ -9,8 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkPrismaticConstraint;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkPrismaticConstraint;
-		
-
 	};
 	static_assert(sizeof(bhkPrismaticConstraint) == 0x20);
 }
