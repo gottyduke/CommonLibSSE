@@ -303,7 +303,7 @@ namespace RE
 	{
 		using func_t = decltype(&TESObjectREFR::GetFirstFreeMarkerIndex);
 		REL::Relocation<func_t> func{ REL::ID(19767) };
-		return func (this, a_actor, a3);
+		return func(this, a_actor, a3);
 	}
 
 	ObjectRefHandle TESObjectREFR::GetHandle()
