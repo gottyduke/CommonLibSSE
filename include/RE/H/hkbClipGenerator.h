@@ -63,6 +63,42 @@ namespace RE
 		};
 		static_assert(sizeof(Echo) == 0x10);
 
+		enum class Flag : uint8_t
+		{
+			/// In SINGLE_PLAY mode, when the clip gets to the end, it will continue the motion if this is true.
+			///
+			/// If you keep playing a clip beyond the end, it will return the last pose.  This is sometimes useful
+			/// as you go into a blend.  If this property is false, the motion is just zero after the end of the clip,
+			/// which means that the animation comes to a halt.  If this property is true, the motion returned
+			/// after the clip reaches the end will be the motion present at the end of the clip, so the animation
+			/// will keep going in the direction it was going.
+			CONTINUE_MOTION_AT_END = 0x1,
+
+			/// In PING_PONG mode, if this is true, synchronization will be done on half a ping-pong cycle
+			/// instead of the full cycle (back and forth).
+			///
+			/// Normally in ping-pong mode, the frequency of the clip generator is
+			/// reported to be half the frequency of the underlying clip.
+			/// So for the purpose of synchronization, one cycle of this clip will
+			/// include playing the clip forward and then backward again to the start.
+			/// If you instead want it to synchronize to half of the ping-pong cycle
+			/// (the animation playing through once, not twice), set this to true.
+			SYNC_HALF_CYCLE_IN_PING_PONG_MODE = 0x2,
+
+			/// If this flag is set the pose is mirrored about a plane.
+			MIRROR = 0x4,
+
+			/// If this flag is set and if the output pose would be a dense pose
+			FORCE_DENSE_POSE = 0x8,
+
+			/// If this flag is set then we do not convert annotation to triggers.
+			DONT_CONVERT_ANNOTATIONS_TO_TRIGGERS = 0x10,
+
+			/// If this flag is set the motion in the animation will not be extracted.
+			IGNORE_MOTION = 0x20,
+		};
+		using Flags = stl::enumeration<Flag, uint8_t>;
+
 		static const hkClass& staticClass();
 
 		hkbClipGenerator();
@@ -110,7 +146,7 @@ namespace RE
 		float                                 userControlledTimeFraction{ 0 };          // 06C - In user controlled mode, this fraction (between 0 and 1) dictates the time of the animation.
 		int16_t                               animationBindingIndex{ -1 };              // 070 - An index into the character's hkbAnimationBindingSet.
 		PlaybackMode                          mode{ PlaybackMode::kModeLooping };       // 072 - The playback mode.
-		std::uint8_t                          flags{ 0 };                               // 073 - Flags for specialized behavior.
+		Flags                                 flags{};                                  // 073 - Flags for specialized behavior.
 		std::uint32_t                         pad74;                                    // 074
 		hkArray<hkRefVariant>                 animDatas;                                // 078
 		hkRefPtr<hkaDefaultAnimationControl>  animationControl;                         // 088

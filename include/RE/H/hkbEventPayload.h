@@ -9,8 +9,10 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbEventPayload;
+		inline static constexpr auto VTABLE = VTABLE_hkbEventPayload;
 
-		~hkbEventPayload() override;  // 00
+		hkbEventPayload() { stl::emplace_vtable(this); }
+		~hkbEventPayload() override = default;  // 00
 	};
 	static_assert(sizeof(hkbEventPayload) == 0x10);
 
@@ -39,13 +41,19 @@ namespace RE
 	class hkbStringEventPayload : public hkbEventPayload
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI_hkbStringEventPayload;
+		inline static constexpr auto VTABLE = VTABLE_hkbStringEventPayload;
+
 		static const hkClass& staticClass()
 		{
 			return *REL::Relocation<hkClass*>(RELOCATION_ID(521145, 407663));
 		}
 
-		~hkbStringEventPayload() override;       // 00
-		hkClass* GetClassType() const override;  // 01
+		hkbStringEventPayload() { stl::emplace_vtable(this); }
+		~hkbStringEventPayload() override = default;                             // 00
+		
+		// override (hkReferencedObject)
+		const hkClass* GetClassType() const override { return &staticClass(); }  // 01
 
 		// members
 		hkStringPtr string;  // 10

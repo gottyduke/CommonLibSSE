@@ -8,16 +8,160 @@ namespace RE
 	{
 	}
 
-	//hkbStateMachine::~hkbStateMachine()
-	//{
-	//	for (auto& transition : activeTransitions) {
-	//		transition.effect->RemoveReference();
-	//	}
-	//
-	//	for (auto state : states) {
-	//		state->RemoveReference();
-	//	}
-	//}
+	hkbStateMachine::~hkbStateMachine()
+	{
+		for (auto& transition : activeTransitions) {
+			transition.transitionEffect->RemoveReference();
+		}
+
+		for (auto state : states) {
+			state->RemoveReference();
+		}
+	}
+
+	void hkbStateMachine::CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const
+	{
+		using func_t = decltype(&hkbStateMachine::CalcContentStatistics);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58713, 0) };
+		return func(this, a_collector, a_class);
+	}
+
+	void hkbStateMachine::collectBindables(hkbBindableCollector& collector)
+	{
+		collector.collectBindable(this);
+		for (auto state : states) {
+			state->collectBindables(collector);
+		}
+	}
+
+	void hkbStateMachine::Activate(const hkbContext& a_context)
+	{
+		using func_t = decltype(&hkbStateMachine::Activate);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58679, 0) };
+		return func(this, a_context);
+	}
+
+	void hkbStateMachine::Update(const hkbContext& a_context, float a_timestep)
+	{
+		using func_t = decltype(&hkbStateMachine::Update);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58680, 0) };
+		return func(this, a_context, a_timestep);
+	}
+
+	void hkbStateMachine::handleEvent(const hkbContext& ctx, hkbEvent& event)
+	{
+		using func_t = decltype(&hkbStateMachine::handleEvent);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58681, 0) };
+		return func(this, ctx, event);
+	}
+
+	void hkbStateMachine::Deactivate(const hkbContext& a_context)
+	{
+		using func_t = decltype(&hkbStateMachine::Deactivate);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58682, 0) };
+		return func(this, a_context);
+	}
+
+	int32_t hkbStateMachine::getMaxNumChildren(GET_CHILDREN_FLAGS flags)
+	{
+		using func_t = decltype(&hkbStateMachine::getMaxNumChildren);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58683, 0) };
+		return func(this, flags);
+	}
+
+	void hkbStateMachine::getChildren(GET_CHILDREN_FLAGS flags, ChildrenInfo& ans)
+	{
+		using func_t = decltype(&hkbStateMachine::getChildren);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58684, 0) };
+		return func(this, flags, ans);
+	}
+
+	bool hkbStateMachine::isValid(hkStringPtr& err) const
+	{
+		using func_t = decltype(&hkbStateMachine::isValid);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58685, 0) };
+		return func(this, err);
+	}
+
+	hkbNode* hkbStateMachine::cloneNode(hkbBehaviorGraph& rootBehavior) const
+	{
+		using func_t = decltype(&hkbStateMachine::cloneNode);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58686, 0) };
+		return func(this, rootBehavior);
+	}
+
+	hkReferencedObject* hkbStateMachine::createInternalState()
+	{
+		using func_t = decltype(&hkbStateMachine::createInternalState);
+		REL::Relocation<func_t> func{ RELOCATION_ID(59335, 0) };
+		return func(this);
+	}
+
+	void hkbStateMachine::getInternalState(hkReferencedObject& internalState) const
+	{
+		using func_t = decltype(&hkbStateMachine::getInternalState);
+		REL::Relocation<func_t> func{ RELOCATION_ID(59336, 0) };
+		return func(this, internalState);
+	}
+
+	void hkbStateMachine::getInternalStateUser(const hkbBehaviorGraph& rootBehavior, hkReferencedObject& internalState) const
+	{
+		using func_t = decltype(&hkbStateMachine::getInternalStateUser);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58687, 0) };
+		return func(this, rootBehavior, internalState);
+	}
+
+	void hkbStateMachine::setInternalState(const hkReferencedObject& internalState)
+	{
+		using func_t = decltype(&hkbStateMachine::setInternalState);
+		REL::Relocation<func_t> func{ RELOCATION_ID(59337, 0) };
+		return func(this, internalState);
+	}
+
+	void hkbStateMachine::setInternalStateUser(const hkbContext& context, const hkReferencedObject& internalState, void* nodeIdToInternalStateMap)
+	{
+		using func_t = decltype(&hkbStateMachine::setInternalStateUser);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58688, 0) };
+		return func(this, context, internalState, nodeIdToInternalStateMap);
+	}
+
+	void hkbStateMachine::getActiveEvents(void* activeEvents) const
+	{
+		using func_t = decltype(&hkbStateMachine::getActiveEvents);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58689, 0) };
+		return func(this, activeEvents);
+	}
+
+	void hkbStateMachine::getActiveVariablesSpecial(void* activeVariables) const
+	{
+		using func_t = decltype(&hkbStateMachine::getActiveVariablesSpecial);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58690, 0) };
+		return func(this, activeVariables);
+	}
+	
+	void hkbStateMachine::generate(const hkbContext& a_context, const hkbGeneratorOutput** activeChildrenOutput, hkbGeneratorOutput& output, float timeOffset) const
+	{
+		using func_t = decltype(&hkbStateMachine::generate);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58691, 0) };
+		return func(this, a_context, activeChildrenOutput, output, timeOffset);
+	}
+
+	bool hkbStateMachine::canRecycleOutput() const
+	{
+		return true;
+	}
+
+	void hkbStateMachine::updateSync(const hkbContext& a_context, hkbNodeInfo& info)
+	{
+		using func_t = decltype(&hkbStateMachine::updateSync);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58693, 0) };
+		return func(this, a_context, info);
+	}
+
+	void hkbStateMachine::startEcho()
+	{
+		echoNextUpdate = true;
+	}
 
 	void hkbStateMachine::addState(int32_t stateId, hkbGenerator* generator, char const* stateName)
 	{
@@ -133,5 +277,19 @@ namespace RE
 		for (auto listener : listeners) {
 			listener->RemoveReference();
 		}
+	}
+
+	void hkbStateMachine::StateInfo::addEnterNotifyEvent(int32_t eventId, hkbEventPayload* eventPayload)
+	{
+		using func_t = decltype(&hkbStateMachine::StateInfo::addEnterNotifyEvent);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58701, 0) };
+		return func(this, eventId, eventPayload);
+	}
+
+	void hkbStateMachine::StateInfo::addExitNotifyEvent(int32_t eventId, hkbEventPayload* eventPayload)
+	{
+		using func_t = decltype(&hkbStateMachine::StateInfo::addExitNotifyEvent);
+		REL::Relocation<func_t> func{ RELOCATION_ID(58702, 0) };
+		return func(this, eventId, eventPayload);
 	}
 }

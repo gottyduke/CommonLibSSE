@@ -109,9 +109,33 @@ namespace RE
 	{
 		auto lhs_data = lhs.data();
 		auto rhs_data = rhs.data();
-		if (!lhs_data)
-			return !rhs_data;
+		if (!lhs_data || !rhs_data)
+			return lhs_data == rhs_data;
 
 		return !std::strcmp(lhs_data, rhs_data);
+	}
+
+	bool operator==(const hkStringPtr& lhs, const char* rhs)
+	{
+		auto lhs_data = lhs.data();
+		if (!lhs_data || !rhs) {
+			return lhs_data == rhs;
+		}
+		return !std::strcmp(lhs_data, rhs);
+	}
+
+	bool operator==(const char* lhs, const hkStringPtr& rhs)
+	{
+		return rhs == lhs;
+	}
+
+	bool operator!=(const hkStringPtr& lhs, const char* rhs)
+	{
+		return !(lhs == rhs);
+	}
+
+	bool operator!=(const char* lhs, const hkStringPtr& rhs)
+	{
+		return !(rhs == lhs);
 	}
 }

@@ -66,7 +66,7 @@ namespace RE
 	{
 	public:
 		// members
-		float modifiers[ACTOR_VALUE_MODIFIERS::kTotal];  // 0
+		float modifiers[ACTOR_VALUE_MODIFIER::kTotal];  // 0
 	};
 	static_assert(sizeof(Modifiers) == 0xC);
 

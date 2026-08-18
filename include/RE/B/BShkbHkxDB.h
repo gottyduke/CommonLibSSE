@@ -121,6 +121,19 @@ namespace RE
 
 			using U_Type = BShkbHkxDB::DBData*;
 
+			struct ArgsType
+			{
+			public:
+				// members
+				uint32_t LODmult{ 0 };         // 0
+				uint32_t texLoadLevel{ 3 };    // 4
+				bool     unk8{ true };         // 8
+				bool     unk9{ false };        // 9
+				bool     unkA{ true };         // A
+				bool     postProcess{ true };  // B
+			};
+			static_assert(sizeof(ArgsType) == 0xC);
+
 			static BSResource::EntryDB<DBTraits>& GetSingleton()
 			{
 				static REL::Relocation<BSResource::EntryDB<DBTraits>**> singleton{ RELOCATION_ID(516410, 402581) };

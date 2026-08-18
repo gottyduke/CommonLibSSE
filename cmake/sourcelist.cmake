@@ -2187,6 +2187,7 @@ set(SOURCES
 	src/RE/H/hkaSkeletonMapperUtils.cpp
 	src/RE/H/hkbBehaviorGraph.cpp
 	src/RE/H/hkbBindable.cpp
+	src/RE/H/hkbBlenderGenerator.cpp
 	src/RE/H/hkbBlendingTransitionEffect.cpp
 	src/RE/H/hkbCharacter.cpp
 	src/RE/H/hkbClipGenerator.cpp

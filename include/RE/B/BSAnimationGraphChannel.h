@@ -8,9 +8,18 @@ namespace RE
 	class BSAnimationGraphChannel : public BSIntrusiveRefCounted
 	{
 	public:
+		union Value_t
+		{
+			int32_t i;
+			float f;
+		};
+		
 		inline static constexpr auto RTTI = RTTI_BSAnimationGraphChannel;
 
-		virtual ~BSAnimationGraphChannel();  // 00
+		BSAnimationGraphChannel(const BSFixedString& name) :
+			channelName(name), value{} {}
+
+		virtual ~BSAnimationGraphChannel() = default;  // 00
 
 		// add
 		virtual void PollChannelUpdateImpl(bool a_arg1) = 0;  // 01
@@ -19,7 +28,7 @@ namespace RE
 		// members
 		std::uint32_t       pad0C;        // 0C
 		const BSFixedString channelName;  // 10
-		std::uint32_t       value;        // 18
+		Value_t             value;        // 18
 		std::uint32_t       pad1C;        // 1C
 	};
 	static_assert(sizeof(BSAnimationGraphChannel) == 0x20);

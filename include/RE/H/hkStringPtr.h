@@ -49,4 +49,8 @@ namespace RE
 	static_assert(sizeof(hkStringPtr) == 0x8);
 
 	bool operator==(const hkStringPtr& lhs, const hkStringPtr& rhs);
+	bool operator==(const hkStringPtr& lhs, const char* rhs);
+	bool operator==(const char* lhs, const hkStringPtr& rhs);
+	bool operator!=(const hkStringPtr& lhs, const char* rhs);
+	bool operator!=(const char* lhs, const hkStringPtr& rhs);
 }

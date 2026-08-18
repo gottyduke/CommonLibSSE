@@ -87,6 +87,38 @@ namespace RE
 		};
 		static_assert(sizeof(ClipData) == 0x20);
 
+		class DependentManagerSmartPtr
+		{
+		public:
+			//~DependentManagerSmartPtr()
+			//{
+			//	bool should_destroy = QChannelsLinked();
+			//	ptr &= 0xFFFFFFFFFFFFFFFE;
+			//	if (should_destroy)
+			//		reinterpret_cast<BSAnimationGraphManagerPtr*>(this)->~BSTSmartPointer();
+			//}
+
+			bool QChannelsLinked() const
+			{
+				return (ptr & 1) != 0;
+			}
+
+			BSAnimationGraphManager* get()
+			{
+				return reinterpret_cast<BSAnimationGraphManager*>(ptr & 0xFFFFFFFFFFFFFFFE);
+			}
+
+			BSAnimationGraphManager* get() const
+			{
+				return reinterpret_cast<BSAnimationGraphManager*>(ptr & 0xFFFFFFFFFFFFFFFE);
+			}
+
+		private:
+			// members
+			uintptr_t ptr;  // 00
+		};
+		static_assert(sizeof(DependentManagerSmartPtr) == 0x8);
+
 		~BSAnimationGraphManager() override;  // 00
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
@@ -111,7 +143,7 @@ namespace RE
 		BSTArray<BSTSmartPointer<BSAnimationGraphChannel>>  boundChannels;         // 10
 		BSTArray<BSTSmartPointer<BSAnimationGraphChannel>>  bumpedChannels;        // 28
 		BSTSmallArray<BSTSmartPointer<BShkbAnimationGraph>> graphs;                // 40
-		BSTArray<BSAnimationGraphManagerPtr>                subManagers;           // 58
+		BSTArray<DependentManagerSmartPtr>                  subManagers;           // 58
 		BSAnimationGraphVariableCache                       variableCache;         // 70
 		mutable BSSpinLock                                  updateLock;            // 98
 		mutable BSSpinLock                                  dependentManagerLock;  // A0

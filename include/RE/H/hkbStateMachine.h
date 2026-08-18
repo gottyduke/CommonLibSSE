@@ -14,6 +14,7 @@
 namespace RE
 {
 	class hkbStateChooser;
+	class hkbEventPayload;
 
 	class hkbStateListener : public hkReferencedObject
 	{
@@ -108,6 +109,9 @@ namespace RE
 
 			StateInfo();
 			~StateInfo() override;  // 00
+
+			void addEnterNotifyEvent(int32_t eventId, hkbEventPayload* eventPayload = nullptr);
+			void addExitNotifyEvent(int32_t eventId, hkbEventPayload* eventPayload = nullptr);
 
 			// members
 			hkArray<hkbStateListener*>    listeners;          // 30 -- A list of listeners that receive callbacks
@@ -269,11 +273,16 @@ namespace RE
 		};
 		static_assert(sizeof(DelayedTransitionInfo) == 0x18);
 
-		//hkbStateMachine() = default;
+		static const hkClass& staticClass()
+		{
+			return *REL::Relocation<hkClass*>(REL::ID(521836));
+		}
+
+		hkbStateMachine() { stl::emplace_vtable(this); }
 		~hkbStateMachine() override;  // 00
 
 		// override (hkReferencedObject)
-		const hkClass* GetClassType() const override;                                                                     // 01 - { return 0; }
+		const hkClass* GetClassType() const override { return &staticClass(); }                                           // 01
 		void           CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
 
 		// override (hkbBindable)
@@ -372,7 +381,7 @@ namespace RE
 		StateMachineSelfTransitionMode              selfTransitionMode{ StateMachineSelfTransitionMode ::kNoTransition };  // 087 - How to deal with self-transitions (when the state machine is transitioned to while still active).
 		bool                                        isActive{ false };                                                     // 088 - Whether or not the state machine is active (activate() called but not deactivate()).
 		char                                        pad89[7];                                                              // 089
-		hkArray<StateInfo*>                         states;                                                                // 090 - The list of states
+		hkArray<StateInfo*>                         states;                                                                // 090 - The list of states. NOT hkRefPtr (look at hkbStateMachine::removeState)
 		hkRefPtr<TransitionInfoArray>               wildcardTransitions;                                                   // 0A0 - The list of transitions from any state (don't have a specific from state)
 		hkScopedPtr<hkPointerMap<int64_t, int64_t>> stateIDToIndexMap;                                                     // 0A8 - State id to index map
 		hkArray<ActiveTransitionInfo>               activeTransitions;                                                     // 0B0 - The list of currently active transitions
