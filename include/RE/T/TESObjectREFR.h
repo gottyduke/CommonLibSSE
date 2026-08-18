@@ -390,6 +390,7 @@ namespace RE
 		bool                                    GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback);
 		std::optional<double>                   GetEnchantmentCharge() const;
 		TESFaction*                             GetFactionOwner();
+		uint32_t                                GetFirstFreeMarkerIndex(Actor* a_actor, char a3);
 		ObjectRefHandle                         GetHandle();
 		float                                   GetHeadingAngle(const RE::NiPoint3& a_pos, bool a_abs);
 		float                                   GetHeight() const;
@@ -463,6 +464,7 @@ namespace RE
 		bool                                    SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
 		void                                    SetPosition(float a_x, float a_y, float a_z);
 		void                                    SetPosition(NiPoint3 a_pos);
+		void                                    Unlock();
 
 		// members
 		OBJ_REFR         data;          // 40

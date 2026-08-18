@@ -299,6 +299,13 @@ namespace RE
 		}
 	}
 
+	uint32_t TESObjectREFR::GetFirstFreeMarkerIndex(Actor* a_actor, char a3)
+	{
+		using func_t = decltype(&TESObjectREFR::GetFirstFreeMarkerIndex);
+		REL::Relocation<func_t> func{ REL::ID(19767) };
+		return func(this, a_actor, a3);
+	}
+
 	ObjectRefHandle TESObjectREFR::GetHandle()
 	{
 		return ObjectRefHandle(this);
@@ -909,6 +916,13 @@ namespace RE
 	void TESObjectREFR::SetPosition(NiPoint3 a_pos)
 	{
 		MoveTo_Impl(ObjectRefHandle(), GetParentCell(), GetWorldspace(), a_pos, data.angle);
+	}
+
+	void TESObjectREFR::Unlock()
+	{
+		using func_t = decltype(&TESObjectREFR::Unlock);
+		REL::Relocation<func_t> func{ REL::ID(19821) };
+		func(this);
 	}
 
 	InventoryChanges* TESObjectREFR::ForceInitInventoryChanges()
