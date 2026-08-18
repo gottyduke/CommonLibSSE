@@ -50,8 +50,8 @@ namespace RE
 		}
 
 		hkbStringEventPayload() { stl::emplace_vtable(this); }
-		~hkbStringEventPayload() override = default;                             // 00
-		
+		~hkbStringEventPayload() override = default;  // 00
+
 		// override (hkReferencedObject)
 		const hkClass* GetClassType() const override { return &staticClass(); }  // 01
 

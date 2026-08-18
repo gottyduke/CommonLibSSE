@@ -138,7 +138,7 @@ namespace RE
 		REL::Relocation<func_t> func{ RELOCATION_ID(58690, 0) };
 		return func(this, activeVariables);
 	}
-	
+
 	void hkbStateMachine::generate(const hkbContext& a_context, const hkbGeneratorOutput** activeChildrenOutput, hkbGeneratorOutput& output, float timeOffset) const
 	{
 		using func_t = decltype(&hkbStateMachine::generate);

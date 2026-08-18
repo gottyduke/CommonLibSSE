@@ -11,9 +11,9 @@ namespace RE
 		union Value_t
 		{
 			int32_t i;
-			float f;
+			float   f;
 		};
-		
+
 		inline static constexpr auto RTTI = RTTI_BSAnimationGraphChannel;
 
 		BSAnimationGraphChannel(const BSFixedString& name) :
