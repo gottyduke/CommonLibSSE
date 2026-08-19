@@ -234,6 +234,13 @@ namespace RE
 		return xText ? xText : GetByType<ExtraTextDisplayData>();
 	}
 
+	void ExtraDataList::GetInteraction(RefrInteractionPtr& interation) const
+	{
+		using func_t = decltype(&ExtraDataList::GetInteraction);
+		REL::Relocation<func_t> func{ RELOCATION_ID(11936, 12075) };
+		return func(this, interation);
+	}
+
 	TESObjectREFR* ExtraDataList::GetLinkedRef(BGSKeyword* a_keyword)
 	{
 		BSReadLockGuard locker(_lock);
@@ -315,6 +322,13 @@ namespace RE
 		using func_t = decltype(&ExtraDataList::SetHeadingTargetRefHandle);
 		REL::Relocation<func_t> func{ RELOCATION_ID(11530, 11676) };
 		return func(this, a_handle);
+	}
+
+	void ExtraDataList::SetInteraction(const RefrInteractionPtr& interation)
+	{
+		using func_t = decltype(&ExtraDataList::SetInteraction);
+		REL::Relocation<func_t> func{ RELOCATION_ID(11935, 12074) };
+		return func(this, interation);
 	}
 
 	void ExtraDataList::SetInventoryChanges(InventoryChanges* a_changes)

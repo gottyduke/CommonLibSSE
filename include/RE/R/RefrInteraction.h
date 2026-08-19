@@ -11,6 +11,8 @@ namespace RE
 	class BGSLoadFormBuffer;
 	class TESActionData;
 
+	BSSmartPointer(RefrInteraction);
+
 	class RefrInteraction : public SyncQueueObj
 	{
 	public:

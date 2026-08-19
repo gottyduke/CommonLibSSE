@@ -336,6 +336,13 @@ namespace RE
 
 		return height;
 	}
+
+	bool TESObjectREFR::GetInteration(RefrInteractionPtr& interaction) const
+	{
+		extraList.GetInteraction(interaction);
+		return static_cast<bool>(interaction);
+	}
+
 	auto TESObjectREFR::GetInventory()
 		-> InventoryItemMap
 	{

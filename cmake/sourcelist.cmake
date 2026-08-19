@@ -198,6 +198,8 @@ set(SOURCES
 	include/RE/B/BGSStoryManagerQuestNode.h
 	include/RE/B/BGSStoryManagerTreeForm.h
 	include/RE/B/BGSStoryTeller.h
+	include/RE/B/BGSSynchronizedAnimationInstance.h
+	include/RE/B/BGSSynchronizedAnimationManager.h
 	include/RE/B/BGSTalkingActivator.h
 	include/RE/B/BGSTextureModel.h
 	include/RE/B/BGSTextureSet.h
@@ -1796,6 +1798,7 @@ set(SOURCES
 	include/RE/T/TESObjectLoadedEvent.h
 	include/RE/T/TESObjectMISC.h
 	include/RE/T/TESObjectREFR.h
+	include/RE/T/TESObjectREFRSync.h
 	include/RE/T/TESObjectSTAT.h
 	include/RE/T/TESObjectTREE.h
 	include/RE/T/TESObjectWEAP.h
@@ -2369,6 +2372,7 @@ set(SOURCES
 	src/RE/T/TESObjectBOOK.cpp
 	src/RE/T/TESObjectCELL.cpp
 	src/RE/T/TESObjectREFR.cpp
+	src/RE/T/TESObjectREFRSync.cpp
 	src/RE/T/TESObjectSTAT.cpp
 	src/RE/T/TESObjectWEAP.cpp
 	src/RE/T/TESQuest.cpp

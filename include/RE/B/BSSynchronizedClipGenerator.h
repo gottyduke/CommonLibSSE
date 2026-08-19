@@ -13,6 +13,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSSynchronizedClipGenerator;
 		inline static constexpr auto VTABLE = VTABLE_BSSynchronizedClipGenerator;
 
+		class hkbSynchronizedAnimationScene : public hkReferencedObject
+		{
+		public:
+			inline static constexpr auto RTTI = RTTI_BSSynchronizedClipGenerator__hkbSynchronizedAnimationScene;
+			inline static constexpr auto VTABLE = VTABLE_BSSynchronizedClipGenerator__hkbSynchronizedAnimationScene;
+		};
+		static_assert(sizeof(hkbSynchronizedAnimationScene) == 0x10);
+
 		// members
 		uint8_t           pad48[8];                      // 048
 		hkbClipGenerator* pClipGenerator;                // 050

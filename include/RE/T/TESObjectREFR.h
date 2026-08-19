@@ -394,6 +394,7 @@ namespace RE
 		ObjectRefHandle                         GetHandle();
 		float                                   GetHeadingAngle(const RE::NiPoint3& a_pos, bool a_abs);
 		float                                   GetHeight() const;
+		bool                                    GetInteration(RefrInteractionPtr& interaction) const;
 		InventoryItemMap                        GetInventory();
 		InventoryItemMap                        GetInventory(std::function<bool(TESBoundObject&)> a_filter, bool a_noInit = false);
 		std::int32_t                            GetInventoryCount(bool no_init = false);

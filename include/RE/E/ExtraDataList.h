@@ -8,6 +8,7 @@
 #include "RE/E/ExtraLevCreaModifier.h"
 #include "RE/F/FormTypes.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/R/RefrInteraction.h"
 #include "RE/S/SoulLevels.h"
 
 namespace RE
@@ -177,6 +178,7 @@ namespace RE
 		const char*           GetDisplayName(TESBoundObject* a_baseObject);
 		BGSEncounterZone*     GetEncounterZone();
 		ExtraTextDisplayData* GetExtraTextDisplayData();
+		void                  GetInteraction(RefrInteractionPtr& interation) const;
 		TESObjectREFR*        GetLinkedRef(BGSKeyword* a_keyword);
 		TESForm*              GetOwner();
 		SOUL_LEVEL            GetSoulLevel() const;
@@ -185,6 +187,7 @@ namespace RE
 		void                  SetEncounterZone(BGSEncounterZone* a_zone);
 		void                  SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
 		void                  SetHeadingTargetRefHandle(ObjectRefHandle& a_handle);
+		void                  SetInteraction(const RefrInteractionPtr& interation);
 		void                  SetInventoryChanges(InventoryChanges* a_changes);
 		void                  SetLevCreaModifier(LEV_CREA_MODIFIER a_modifier);
 		void                  SetLinkedRef(TESObjectREFR* a_targetRef, BGSKeyword* a_keyword);
