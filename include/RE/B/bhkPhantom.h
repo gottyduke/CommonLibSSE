@@ -17,7 +17,8 @@ namespace RE
 		void          RemoveFromCurrentWorld() override;  // 2A
 
 		// members
-		std::uint64_t unk28;  // 28
+		uint8_t unk28;     // 28
+		uint8_t pad29[7];  // 29
 	};
 	static_assert(sizeof(bhkPhantom) == 0x30);
 }

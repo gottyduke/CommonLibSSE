@@ -36,7 +36,7 @@ namespace RE
 			kIgnore
 		};
 
-		enum class BroadPhaseType
+		enum class BroadPhaseType : uint8_t
 		{
 			kInvalid,
 			kEntity,
